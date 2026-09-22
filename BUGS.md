@@ -36,12 +36,8 @@ Document each bug you find and fix here. Use this format for each of the five bu
 
 ## Bug 5
 
-**Symptom:** textboxes will appear on screen after adding a chore but no new text
+**Symptom:** modal doesn't dissapear after adding new chore
 
-**Root Cause:** I had not wrapped the text in bug fix #1
+**Root Cause:** submit handler doesn't close the modal at all
 
-**Fix:** wrapped text with a new text wrapper correctly
-
-## Additional Notes
-
-I don't know what other bug was missing, but just ran this through an AI model after completing to confirm. This is working 100% after manual testing as well.
+**Fix:** added functionality to close the modal when submitting a new chore

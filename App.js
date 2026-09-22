@@ -35,7 +35,6 @@ export default function App() {
       >
         <Text style={styles.newChoreButtonText}>+ Add Chore</Text>
       </Pressable>
-
       {chores.length === 0 ? (
         <Text style={styles.emptyText}>No chores yet. Add one above!</Text>
       ) : (

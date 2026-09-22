@@ -15,6 +15,7 @@ export default function AddChoreModal({ visible, onClose, onAddChore }) {
     if (choreText.trim().length === 0) {
       return;
     }
+    onClose();
     onAddChore(choreText);
     setChoreText("");
   }
