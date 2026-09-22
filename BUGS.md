@@ -8,7 +8,12 @@ Document each bug you find and fix here. Use this format for each of the five bu
 
 **Root Cause:** The text wasn't placed between text tags.
 
-**Fix:** Put the text between text tags.
+**Fix:**
+
+<View style={styles.textRow}>
+  {isDone && <Text style={styles.checkmark}>{"✓ "}</Text>}
+  <Text>{text}</Text>
+</View>
 
 ## Bug 2
 
@@ -18,6 +23,12 @@ Document each bug you find and fix here. Use this format for each of the five bu
 
 **Fix:** replace the existing array with a .filter function to rebuild the array without the id that is being deleted
 
+function deleteChoreHandler(id) {
+setChores((currentChores) =>
+currentChores.filter((chore) => chore.id != id),
+);
+}
+
 ## Bug 3
 
 **Symptom:** incorrect rows deleting when pressing delete button
@@ -25,6 +36,8 @@ Document each bug you find and fix here. Use this format for each of the five bu
 **Root Cause:** current key extractor references the array position, not the id
 
 **Fix:** pass in the item id instead
+
+keyExtractor={(item) => item.id}
 
 ## Bug 4
 
@@ -34,6 +47,13 @@ Document each bug you find and fix here. Use this format for each of the five bu
 
 **Fix:** replace onchange with onchangetext
 
+<TextInput
+  style={styles.input}
+  placeholder="e.g. Water the plants"
+  value={choreText}
+  onChangeText={setChoreText}
+/>
+
 ## Bug 5
 
 **Symptom:** modal doesn't dissapear after adding new chore
@@ -41,3 +61,12 @@ Document each bug you find and fix here. Use this format for each of the five bu
 **Root Cause:** submit handler doesn't close the modal at all
 
 **Fix:** added functionality to close the modal when submitting a new chore
+
+function submitHandler() {
+if (choreText.trim().length === 0) {
+return;
+}
+onAddChore(choreText);
+setChoreText("");
+onClose();
+}
